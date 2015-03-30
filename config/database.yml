@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: localhost
+  username: skillz
+  password:
+  min_messages: error
+
+development:
+  <<: *default
+  database: skillz_development
+
+test:
+  <<: *default
+  database: skillz_test
+
+production:
+  <<: *default
+  database: skillz

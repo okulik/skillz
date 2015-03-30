@@ -1,0 +1,45 @@
+<h1>Find workers</h1>
+<%= form_tag({}, class: 'form-inline') do %>
+  <%= label_tag :skills, "Search for skills:" %>
+  <%= text_field_tag :skills, display_skills(@skills), class: 'form-control', placeholder: 'comma-delimited list of skills', style: 'width:300px' %>
+  <%= submit_tag "Search", class: "btn btn-primary glyphicon glyphicon-search" %>
+<% end %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Skills</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @workers.each do |worker| %>
+    <tr>
+      <td><%= worker.name %></td>
+      <td><%= display_skills(worker.skills) %></td>
+      <td><%= link_to 'Hire', new_job_path(wid: worker.id), class: "btn btn-primary btn-xs" %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h1>Jobs history</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Worker</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @jobs.each do |job| %>
+    <tr>
+      <td><%= job.description %></td>
+      <td><%= job.start_date %></td>
+      <td><%= job.end_date %></td>
+      <td><%= link_to job.worker.name, worker_path(job.worker.id) %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

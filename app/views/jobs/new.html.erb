@@ -1,0 +1,24 @@
+<h3>Worker Details</h3>
+<p>Name: <%= @worker.name %></p>
+<p>Email: <%= @worker.user.email %></p>
+<p>Skills: <%= display_skills(@worker.skills, ', ') %></p>
+
+<h3>Create a job</h3>
+<%= form_for(@job, url: { action: 'create' }, html: { :role => 'form'}) do |f| %>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_field :description, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :start_date %>
+    <%= f.date_field :start_date, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :end_date %>
+    <%= f.date_field :end_date, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.hidden_field :worker_id, value: @worker.id %>
+  </div>
+  <%= f.submit 'Create', :class => 'button btn-primary right' %>
+<% end %>
