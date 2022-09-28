@@ -10,4 +10,4 @@ User model has polymorphic association to worker and customer models i.e. to any
 
 For storing worker skills we use PostgreSQL array type where skill are matched using ANY and ALL operators. PostgreSQL has GIN index that is inverted index type and that can handle values containing more than one key, well suited for our skills array application (http://www.postgresql.org/docs/9.4/static/indexes-types.html).
 
-TL;DR
+TL;DR2
